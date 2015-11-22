@@ -1,0 +1,9 @@
+{
+  "firebase": "tatdbg-001",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
