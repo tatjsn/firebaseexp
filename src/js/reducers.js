@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { RECEIVE_ENTRY } from './actions';
+import { RECEIVE_AUTH } from './actions';
 
 function entries(state = [], action) {
   switch (action.type) {
@@ -10,6 +11,16 @@ function entries(state = [], action) {
   }
 }
 
+function auth(state = {}, action) {
+  switch (action.type) {
+    case RECEIVE_AUTH:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 export const app = combineReducers({
-  entries
+  entries,
+  auth
 });

@@ -9,36 +9,14 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { app } from './reducers';
-import { receiveEntry } from './actions';
-import Firebase from 'firebase';
+import { init, receiveEntry } from './actions';
 
 const createStoreWithMiddleware = applyMiddleware(
   thunkMiddleware // lets us dispatch() from actions
 )(createStore);
 const store = createStoreWithMiddleware(app);
 
-const ref = new Firebase('https://tatdbg-001.firebaseio.com');
-ref.onAuth(auth => {
-  if (auth) {
-    console.log('uid=', auth.uid);
-  } else {
-    console.log('no auth');
-  }
-});
-
-function authWithPopup() {
-  ref.authWithOAuthPopup('google', (error, auth) => {
-    if (error) {
-      console.log('Login failed', error);
-    } else {
-      console.log('Back from popup: uid=', auth.uid);
-    }
-  });
-}
-
-ref.child('entries').orderByKey().limitToLast(3).on('child_added', snapshot => {
-  store.dispatch(receiveEntry(snapshot.val()));
-});
+store.dispatch(init());
 
 render((
   <Provider store={store}>
