@@ -26,6 +26,9 @@ export const login = () => dispatch =>
     if (!error && auth) {
       dispatch(receiveAuth(auth));
     }
-  })
+  });
 
-export const post = (text) =>  dispatch => fb.child('entries').push({ text })
+export const post = (text, history, state) =>  dispatch =>
+  fb.child('entries').push({ text }, () => {
+    history.pushState(state, '/');
+  });
