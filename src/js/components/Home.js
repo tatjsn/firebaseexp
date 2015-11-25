@@ -7,14 +7,9 @@ const Home = ({ entries, auth, dispatch}) => {
   return (
     <div>
       {entries.map((entry, i) => <p key={'entry.' + i}>text={entry.text}</p>)}
-      <p>
-        <Link to="/post">Post</Link>
+      <p>{auth.uid ? <Link to="/post">Post</Link> :
+        <button onClick={() => dispatch(login())}>Login</button>}
       </p>
-      {auth.uid ? null :
-        <p>
-          <button onClick={() => dispatch(login())}>Login</button>
-        </p>
-      }
     </div>
   );
 }
