@@ -11,11 +11,9 @@ class Post extends React.Component {
   // https://phabricator.babeljs.io/T2779
   render() {
     return (
-      <div>
-        <textarea rows="20" ref="text" defaultValue="Hello"></textarea>
-        <p>
-          <button onClick={::this.handlePost}>Post</button>
-        </p>
+      <div className="row">
+        <textarea className="form-control" rows="3" ref="text" defaultValue="Hello"></textarea>
+        <button type="button" className="btn btn-primary-outline" onClick={::this.handlePost}>Post</button>
       </div>
     );
   }

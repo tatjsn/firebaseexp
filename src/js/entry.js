@@ -1,7 +1,8 @@
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, Redirect } from 'react-router';
+import { Router, Route, IndexRoute, Redirect } from 'react-router';
+import App from './components/App';
 import Home from './components/Home';
 import Post from './components/Post';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
@@ -21,8 +22,10 @@ store.dispatch(init());
 render((
   <Provider store={store}>
     <Router history={createBrowserHistory()}>
-      <Route path="/" component={Home} />
-      <Route path="/post" component={Post} />
+      <Route path="/" component={App}>
+        <IndexRoute component={Home} />
+        <Route path="post" component={Post} />
+      </Route>
       <Redirect from="*" to="/" />
     </Router>
   </Provider>
