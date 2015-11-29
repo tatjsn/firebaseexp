@@ -5,7 +5,7 @@ import { Router, Route, IndexRoute, Redirect } from 'react-router';
 import App from './components/App';
 import Home from './components/Home';
 import Post from './components/Post';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+import history from './history';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
@@ -21,7 +21,7 @@ store.dispatch(init());
 
 render((
   <Provider store={store}>
-    <Router history={createBrowserHistory()}>
+    <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="post" component={Post} />

@@ -1,4 +1,5 @@
 import Firebase from 'firebase';
+import history from './history';
 
 const fb = new Firebase('https://tatdbg-001.firebaseio.com');
 
@@ -28,7 +29,7 @@ export const login = () => dispatch =>
     }
   });
 
-export const post = (text, history) =>  dispatch =>
+export const post = text =>  dispatch =>
   fb.child('entries').push({ text }, () => {
     history.push('/');
   });
