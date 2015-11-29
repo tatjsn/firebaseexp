@@ -1,7 +1,7 @@
 import React from 'react';
-import Markdown from 'remarkable';
+import Remarkable from 'remarkable';
 
-const md = new Markdown();
+const md = new Remarkable();
 
 export default ({ children }) =>
   <div dangerouslySetInnerHTML={{ __html: md.render(children) }} />
