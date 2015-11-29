@@ -4,8 +4,8 @@ import { post } from '../actions';
 
 class Post extends React.Component {
   handlePost() {
-    const {dispatch, history, state} = this.props;
-    dispatch(post(this.refs.text.value, history, state));
+    const {dispatch, history} = this.props;
+    dispatch(post(this.refs.text.value, history));
   }
 
   // https://phabricator.babeljs.io/T2779

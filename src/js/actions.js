@@ -28,7 +28,7 @@ export const login = () => dispatch =>
     }
   });
 
-export const post = (text, history, state) =>  dispatch =>
+export const post = (text, history) =>  dispatch =>
   fb.child('entries').push({ text }, () => {
-    history.pushState(state, '/');
+    history.push('/');
   });
